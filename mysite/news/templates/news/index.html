@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block sidebar %}
+        {%include 'inc/_sidebar.html'%}
+{% endblock %}
+{% block content %}
+    <ul class="news-block">
+        {% for item in news%}
+            {%include 'news/news_component.html' with block=item%}
+        {%endfor%}
+    </ul>
+{% endblock %}

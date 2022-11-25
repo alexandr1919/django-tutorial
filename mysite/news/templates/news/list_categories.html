@@ -1,0 +1,7 @@
+<ul class="categories">
+        {% for item in categories %}
+                <li class="categories-item">
+                        <a href="{{item.get_absolute_url}}" class="categories-link" >{{item.title}}</a>
+                </li>
+        {% endfor %}
+</ul>

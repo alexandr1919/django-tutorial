@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Дефолтный заголовок{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            {% include 'inc/_nav.html'%}
+        </header>
+        <main class="main">
+            {% block sidebar %}
+            {%endblock%}
+            <div class="content">
+                {% block content %}Content{%endblock%}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

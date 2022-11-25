@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load news_tags %}
+{% block title %}
+{{ item.title }}
+{% endblock %}
+{% block sidebar %}
+        {%include 'inc/_sidebar.html'%}
+{% endblock %}
+{% block content %}
+    <ul class="news-block">
+        {%include 'news/news_component.html' with block=news_item full=True%}
+    </ul>
+{% endblock %}
