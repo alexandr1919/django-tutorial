@@ -1,14 +1,27 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView
 from .models import News, Category
 from .forms import NewsForm
 
+
 # Create your views here.
 
-# в request хранятся данные о запросе (куки, сессии и тд)
+class HomeNews(ListView):
+    model = News
+    template_name = 'news/index.html'
+    context_object_name = 'news'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Главная страница'
+        return context
+
+    def get_queryset(self):
+        return News.objects.filter(is_published=True)
+
+
 def index(request):
     news = News.objects.all()
-    print(news)
     return render(request, 'news/index.html', {'news': news, 'title': 'Список новостей'})
 
 
@@ -25,7 +38,11 @@ def view_news(request, news_id):
 
 def add(request):
     if request.method == 'POST':
-        pass
+        form = NewsForm(request.POST)
+        if form.is_valid():
+            news = News.objects.create(**form.cleaned_data)
+            news.save()
+            return redirect(news)
     else:
         form = NewsForm()
     return render(request, 'news/add.html', {'form': form})

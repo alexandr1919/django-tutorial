@@ -1,5 +1,7 @@
 <li class="news-block-item{% if not full %} small{% endif %}">
-    <a class="categories-link" href="{{block.category.get_absolute_url}}">{{block.category.title}}</a>
+    <div class="news-category-wrapper">
+        <a class="categories-link" href="{{block.category.get_absolute_url}}">{{block.category.title}}</a>
+    </div>
     <h1 class="news-block-title">{{block.title}}</h1>
     <div class="news-block-content">
         <div class="news-block-body">
