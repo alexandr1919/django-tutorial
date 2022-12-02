@@ -19,7 +19,7 @@ class Category(models.Model):
 
 class News(models.Model):
     def get_absolute_url(self):
-        return reverse('view_news', kwargs={"news_id": self.pk})
+        return reverse('view_news', kwargs={"pk": self.pk})
     title = models.CharField(max_length=150, verbose_name='Наименование')
     content = models.TextField(blank=True, verbose_name='Контент')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
