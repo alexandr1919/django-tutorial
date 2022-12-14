@@ -1,6 +1,6 @@
 <li class="news-block-item{% if not full %} small{% endif %}">
     <div class="news-category-wrapper">
-        <a class="categories-link" href="{{block.category.get_absolute_url}}">{{block.category.title}}</a>
+        <a class="news-categories-link" href="{{block.category.get_absolute_url}}">{{block.category.title}}</a>
     </div>
     <h1 class="news-block-title">{{block.title}}</h1>
     <div class="news-block-content">
@@ -12,7 +12,7 @@
             </div>
             <p class="news-block-created">{{block.created_at|date:"Y-m-d H:i"}}</p>
             {% if not full %}
-            <a class="categories-link" href="{{block.get_absolute_url}}">Read more</a>
+            <a class="read-more-link" href="{{block.get_absolute_url}}">Read more</a>
             {% endif %}
         </div>
         <div class="news-block-image">

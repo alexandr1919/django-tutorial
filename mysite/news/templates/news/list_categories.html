@@ -1,7 +1,10 @@
 <ul class="categories">
         {% for item in categories %}
                 <li class="categories-item">
-                        <a href="{{item.get_absolute_url}}" class="categories-link" >{{item.title}}</a>
+                        <a href="{{item.get_absolute_url}}" class="categories-link">
+                                <span class="categories-link-title">{{item.title}}</span>
+                                <sub class="categories-count">{{item.cnt}}</sub>
+                        </a>
                 </li>
         {% endfor %}
 </ul>
